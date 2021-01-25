@@ -1,0 +1,25 @@
+﻿
+@model IEnumerable<WebGB.Models.Employeer>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+        <div class="container">
+            <h1>Сотрудники</h1>
+            <table>
+                @foreach (var employer in Model)
+                {
+                    <tr>
+                        <td> <a asp-action="Details" asp-route-id="@employer.ID"> @employer.ID </a> </td>
+                        <td>@employer.Name </td>
+                        <td>@employer.Surname </td>
+                        <td> <a href='~/Default/DispEmployer/@employer.ID'>Редактировать</a> </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+
+

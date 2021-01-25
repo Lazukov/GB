@@ -51,7 +51,7 @@ namespace WebGB
 
                 endpoints.MapGet("/", async context =>
                 {
-                     await context.Response.WriteAsync("<a href='/Default/Employeers'>_____List Of Employeers____Урок2</a>" + Configuration["Test"]);
+                     await context.Response.WriteAsync("<a href='/Default/'>Main Page</a>" );
                 });
 
                 endpoints.MapControllerRoute(
