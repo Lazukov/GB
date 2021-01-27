@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,7 +51,7 @@ namespace WebGB
 
                 endpoints.MapGet("/", async context =>
                 {
-                     await context.Response.WriteAsync("<a href='/Default/'>Main Page</a>" );
+                     await context.Response.WriteAsync("<a href='/Default/'>Main Page!!!</a>" );
                 });
 
                 endpoints.MapControllerRoute(
