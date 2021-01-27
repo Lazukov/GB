@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\Middleware\" />
     <Folder Include="Views\CommonLayouts\Log\Partial\" />
     <Folder Include="wwwroot\template_pages\" />
   </ItemGroup>
