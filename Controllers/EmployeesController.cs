@@ -34,7 +34,7 @@ namespace WebGB.Controllers
         {
             //Физическая модель и модель представления должны быть разделены
             Employeer emp=  _EmployeesData.Get(id);
-            return View(new EmployeerViewModel()
+            return emp!=null ? View(new EmployeerViewModel()
             {
 
                 ID = emp.ID,
@@ -43,7 +43,7 @@ namespace WebGB.Controllers
                 Name=emp.Name,
                 Surname=emp.Surname
                 
-            });
+            }): View(new EmployeerViewModel());
             ;
         }
 
@@ -51,7 +51,44 @@ namespace WebGB.Controllers
         public IActionResult Edit(EmployeerViewModel emp)
         {
             var em = _EmployeesData.Get(emp.ID);
-            var emUpdate=(new Employeer()
+            if (em != null)
+            {
+                var emUpdate = (new Employeer()
+                {
+
+                    ID = emp.ID,
+                    Date = emp.Date,
+                    Description = emp.Description,
+                    Name = emp.Name,
+                    Surname = emp.Surname
+
+                });
+                _EmployeesData.Update(emUpdate);
+            }
+            else
+            {
+                var emUpdate = (new Employeer()
+                {
+
+                    ID = _EmployeesData.Get().Count()+1,
+                    Date = emp.Date,
+                    Description = emp.Description,
+                    Name = emp.Name,
+                    Surname = emp.Surname
+
+                });
+                _EmployeesData.Add(emUpdate);
+            }
+           return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region Delete
+        public IActionResult Delete(int id)
+        {
+            //Физическая модель и модель представления должны быть разделены
+            Employeer emp = _EmployeesData.Get(id);
+            return View(new EmployeerViewModel()
             {
 
                 ID = emp.ID,
@@ -61,9 +98,24 @@ namespace WebGB.Controllers
                 Surname = emp.Surname
 
             });
-            _EmployeesData.Update(emUpdate);
-           return RedirectToAction("Index");
+            ;
+        }
+
+        [HttpPost]
+        public IActionResult Delete(EmployeerViewModel emp)
+        {
+            _EmployeesData.Delete(emp.ID);
+            return RedirectToAction("Index");
         }
         #endregion
+
+        #region Add
+        public IActionResult Add(EmployeerViewModel empl)
+        {
+            return View("Edit",empl);
+        }
+
+        #endregion
+
     }
 }

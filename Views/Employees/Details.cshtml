@@ -2,14 +2,14 @@
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+         Layout = "_Layout";
 }
 
     <div class="container">
-            <h1>Details</h1>
+            <h1>Карточка сотрудника</h1>
 
             <div>
-                <h4>Employeer</h4>
+                <h4>Сотрудник</h4>
                 <hr />
                 <dl class="row">
                     <dt class="col-sm-2">
@@ -46,6 +46,7 @@
             </div>
             <div>
                 <a asp-action="Edit" asp-route-id="@Model.ID">Редактировать </a>
+                <a asp-action="Delete" asp-route-id="@Model.ID">Удалить </a>
                 <a asp-action="Index">Вернуться к списку </a>
             </div>
 
