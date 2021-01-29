@@ -50,6 +50,7 @@ namespace WebGB.Controllers
         [HttpPost]
         public IActionResult Edit(EmployeerViewModel emp)
         {
+            //ModelState.AddModelError("222", "");
             if (ModelState.IsValid)
             {
                 var em = _EmployeesData.Get(emp.ID);

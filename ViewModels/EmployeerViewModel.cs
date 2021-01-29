@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WebGB.ViewModels
 {
     //Обычно дублирует модель
-    public class EmployeerViewModel
+    public class EmployeerViewModel: IValidatableObject
     {
         [Range(0,100,ErrorMessage ="Ошибка!")]
         [Display(Name="ИД")]
@@ -27,5 +27,17 @@ namespace WebGB.ViewModels
 
         [Display(Name = "Описание")]
         public string Description { get; set; }
+
+        [Display(Name = "Дополнительное описание")]
+        public string DescriptionAdd { get; set; }
+
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            // d validationContext.GetService()
+            // yield return ValidationResult.Success;
+            //yield return new ValidationResult("ssss");
+            yield return new ValidationResult("11");
+        }
     }
 }
