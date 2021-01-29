@@ -50,36 +50,40 @@ namespace WebGB.Controllers
         [HttpPost]
         public IActionResult Edit(EmployeerViewModel emp)
         {
-            var em = _EmployeesData.Get(emp.ID);
-            if (em != null)
+            if (ModelState.IsValid)
             {
-                var emUpdate = (new Employeer()
+                var em = _EmployeesData.Get(emp.ID);
+                if (em != null)
                 {
+                    var emUpdate = (new Employeer()
+                    {
 
-                    ID = emp.ID,
-                    Date = emp.Date,
-                    Description = emp.Description,
-                    Name = emp.Name,
-                    Surname = emp.Surname
+                        ID = emp.ID,
+                        Date = emp.Date,
+                        Description = emp.Description,
+                        Name = emp.Name,
+                        Surname = emp.Surname
 
-                });
-                _EmployeesData.Update(emUpdate);
-            }
-            else
-            {
-                var emUpdate = (new Employeer()
+                    });
+                    _EmployeesData.Update(emUpdate);
+                }
+                else
                 {
+                    var emUpdate = (new Employeer()
+                    {
 
-                    ID = _EmployeesData.Get().Count()+1,
-                    Date = emp.Date,
-                    Description = emp.Description,
-                    Name = emp.Name,
-                    Surname = emp.Surname
+                        ID = _EmployeesData.Get().Count() + 1,
+                        Date = emp.Date,
+                        Description = emp.Description,
+                        Name = emp.Name,
+                        Surname = emp.Surname
 
-                });
-                _EmployeesData.Add(emUpdate);
+                    });
+                    _EmployeesData.Add(emUpdate);
+                }
+                return RedirectToAction("Index");
             }
-           return RedirectToAction("Index");
+            return View();
         }
         #endregion
 
