@@ -20,6 +20,9 @@ namespace WebGB.Components
 
             var sections = _Data.GetSections();
             var parent_sections = sections.Where(x => x.ParentId is null).ToList();
+
+            var sections_view
+
             return View();
         }
     }
