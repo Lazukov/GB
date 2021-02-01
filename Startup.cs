@@ -32,6 +32,7 @@ namespace WebGB
         public void ConfigureServices(IServiceCollection services)
         {
             //Регистрируем сервис
+            services.AddTransient<IProductData, InMemoryProductData>();
             services.AddTransient<IEmployeesService, InMemoryEmployeesData>();
             services.AddControllersWithViews();
 
