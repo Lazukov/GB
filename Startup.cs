@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
+using WebGB.Infrastructure.Services;
+using WebGB.Infrastructure.Interfaces;
 
 namespace WebGB
 {
@@ -29,6 +31,8 @@ namespace WebGB
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //Регистрируем сервис
+            services.AddTransient<IEmployeesService, InMemoryEmployeesData>();
             services.AddControllersWithViews();
 
         }
@@ -51,7 +55,7 @@ namespace WebGB
 
                 endpoints.MapGet("/", async context =>
                 {
-                     await context.Response.WriteAsync("<a href='/Default/Employeers'>_____List Of Employeers_____</a>" + Configuration["Test"]);
+                     await context.Response.WriteAsync("<a href='/Default/'>Main Page!!!</a>" );
                 });
 
                 endpoints.MapControllerRoute(

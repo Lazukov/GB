@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Default";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Home | E-Shopper</title>
+        <partial name="Partial/_Styles"></partial>
+
+        <link rel="shortcut icon" href="images/ico/favicon.ico">
+        @await RenderSectionAsync("Styles",false)
+    </head>
+    <body>
+   
+        <partial name="Partial/_Header"></partial>
+
+        @RenderBody()
+
+        <partial name="Partial/_Footer"></partial>
+
+
+        @await RenderSectionAsync("Scripts", false)
+
+        <script src="~/js/jquery.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery.scrollUp.min.js"></script>
+        <script src="~/js/price-range.js"></script>
+        <script src="~/js/jquery.prettyPhoto.js"></script>
+        <script src="~/js/main.js"></script>
+
+    </body>
+
+</html>

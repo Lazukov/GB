@@ -1,19 +1,33 @@
 ﻿
 @{
+
     ViewData["Title"] = "Default";
+       Layout = "_Layout";
 }
 
-<h1>Стартовая страница</h1>
-@{ 
-    int i = 0;
-   
-    <h1>@i</h1>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+              <partial name="Partial\_LeftSideBar" />
+            </div>
+
+            <div class="col-sm-9 padding-right">
+
+                <partial name="Partial\_FeaturesItems" />
+
+                <partial name="Partial\_CategoryBar" />
+
+                <partial name="Partial\_RecommendedItems" />
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
 }
-<table>
-    <tr>
-        <td>
-            <a href="~/Default/Employeers">List Of Employeers</a>
-        </td>
-    </tr>
-</table>
+
 
